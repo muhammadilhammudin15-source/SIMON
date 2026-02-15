@@ -1,0 +1,44 @@
+[
+  {
+    "nama": "ksk",
+    "kegiatan": "juangna",
+    "waktu": "12/2/2026, 07.36.58"
+  },
+  {
+    "nama": "ilham",
+    "kegiatan": "kiuann",
+    "waktu": "12/2/2026, 07.42.52"
+  },
+  {
+    "nama": "ooo",
+    "kegiatan": "lowooppo",
+    "waktu": "12/2/2026, 07.53.30"
+  },
+  {
+    "id": 1770840626231,
+    "nama": "c",
+    "kegiatan": "xxcccccccccccccccccccccccccccccccccccccccccc ",
+    "waktu": "12/2/2026, 08.10.26"
+  },
+  {
+    "id": 1770841717693,
+    "waktu": "12/2/2026, 08.28.37"
+  },
+  {
+    "id": 1770843005768,
+    "tanggal": "2026-02-11",
+    "kelas": "A25 E",
+    "mapel": "PPKn",
+    "materi": "ll",
+    "jamMulai": "15:00",
+    "jamSelesai": "15:30",
+    "metode": [
+      "Ceramah"
+    ],
+    "kendala": [
+      "Waktu kurang"
+    ],
+    "kendalaLainText": "",
+    "skala": 3
+  }
+]
