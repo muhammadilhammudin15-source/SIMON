@@ -6,7 +6,6 @@
 
 <style>
 *{box-sizing:border-box}
-
 body{
 margin:0;
 font-family:'Segoe UI',sans-serif;
@@ -18,13 +17,11 @@ display:flex;
 justify-content:center;
 align-items:center;
 }
-
 @keyframes bg{
 0%{background-position:0% 50%}
 50%{background-position:100% 50%}
 100%{background-position:0% 50%}
 }
-
 .card{
 width:95%;
 max-width:950px;
@@ -36,17 +33,13 @@ animation:fade 0.6s ease;
 overflow:auto;
 max-height:95vh;
 }
-
 @keyframes fade{
 from{opacity:0;transform:translateY(30px)}
 to{opacity:1;transform:translateY(0)}
 }
-
 h1{text-align:center;margin:0;}
 h3{text-align:center;margin-top:5px;color:#666;font-weight:normal;}
-
 label{font-weight:600;font-size:14px;}
-
 input,select,textarea{
 width:100%;
 padding:11px;
@@ -57,24 +50,8 @@ border:1px solid #ccc;
 transition:0.3s;
 font-size:14px;
 }
-
-select{
-appearance:none;
-background-image:url("data:image/svg+xml;utf8,<svg fill='%23667eea' height='20' viewBox='0 0 24 24' width='20' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>");
-background-repeat:no-repeat;
-background-position:right 10px center;
-background-size:18px;
-}
-
-input:focus,select:focus,textarea:focus{
-border-color:#667eea;
-outline:none;
-box-shadow:0 0 8px rgba(102,126,234,0.4);
-}
-
 .row{display:flex;gap:15px;}
 .row div{flex:1;}
-
 button{
 width:100%;
 padding:14px;
@@ -85,34 +62,8 @@ color:white;
 font-size:16px;
 cursor:pointer;
 transition:0.3s;
-position:relative;
 }
-
-button:hover{
-background:#4f5bd5;
-transform:scale(1.02);
-}
-
-#spinner{
-width:18px;
-height:18px;
-border:3px solid rgba(255,255,255,0.3);
-border-top:3px solid white;
-border-radius:50%;
-display:inline-block;
-animation:spin 0.7s linear infinite;
-vertical-align:middle;
-}
-
-@keyframes spin{
-0%{transform:rotate(0deg)}
-100%{transform:rotate(360deg)}
-}
-
-button.loading{
-pointer-events:none;
-}
-
+button:hover{background:#4f5bd5;}
 @media(max-width:700px){
 .row{flex-direction:column}
 }
@@ -135,8 +86,6 @@ pointer-events:none;
 <label>Mata Pelajaran</label>
 <select name="mapel" required>
 <option value="">Pilih Mata Pelajaran</option>
-
-<optgroup label="Umum">
 <option>Bahasa Indonesia</option>
 <option>Bahasa Inggris</option>
 <option>Matematika</option>
@@ -145,28 +94,17 @@ pointer-events:none;
 <option>Informatika</option>
 <option>PJOK</option>
 <option>Seni Budaya</option>
-</optgroup>
-
-<optgroup label="IPA">
 <option>Fisika</option>
 <option>Kimia</option>
 <option>Biologi</option>
-</optgroup>
-
-<optgroup label="IPS">
 <option>Ekonomi</option>
 <option>Geografi</option>
 <option>Sosiologi</option>
-</optgroup>
-
-<optgroup label="Agama (Ke-MAN-an)">
 <option>Al-Qur'an Hadis</option>
 <option>Aqidah Akhlak</option>
 <option>Fikih</option>
 <option>SKI</option>
 <option>Bahasa Arab</option>
-</optgroup>
-
 </select>
 
 <label>Materi Pembelajaran</label>
@@ -177,7 +115,6 @@ pointer-events:none;
 <label>Jam Mulai</label>
 <select name="jamMulai" id="jamMulai" required></select>
 </div>
-
 <div>
 <label>Jam Selesai</label>
 <select name="jamSelesai" id="jamSelesai" required></select>
@@ -186,7 +123,6 @@ pointer-events:none;
 
 <label>Metode Pembelajaran</label>
 <select name="metode" required>
-<option value="">Pilih Metode</option>
 <option>Ceramah</option>
 <option>Diskusi</option>
 <option>Praktik</option>
@@ -215,40 +151,38 @@ pointer-events:none;
 
 <label>Skala Keberhasilan</label>
 <select name="skala" required>
-<option value="">Pilih Skala</option>
-<option value="1">1 - Sangat Tidak Efektif</option>
-<option value="2">2 - Kurang Efektif</option>
-<option value="3">3 - Cukup</option>
-<option value="4">4 - Baik</option>
-<option value="5">5 - Sangat Baik</option>
+<option value="1">1</option>
+<option value="2">2</option>
+<option value="3">3</option>
+<option value="4">4</option>
+<option value="5">5</option>
 </select>
 
-<button type="submit" id="submitBtn">
-<span id="btnText">Kirim Laporan</span>
-<span id="spinner" style="display:none;"></span>
-</button>
+<button type="submit">Kirim Laporan</button>
 
 </form>
 </div>
 
 <script>
 
+// ================= KELAS =================
 const kelasSelect = document.getElementById("kelasSelect");
 
-function generateKelas(tingkat, jumlahHuruf) {
+function generateKelas(prefix, jumlahHuruf) {
   for (let i = 0; i < jumlahHuruf; i++) {
     const huruf = String.fromCharCode(65 + i);
     const option = document.createElement("option");
-    option.value = tingkat + huruf;
-    option.textContent = tingkat + huruf;
+    option.value = prefix + huruf;
+    option.textContent = prefix + huruf;
     kelasSelect.appendChild(option);
   }
 }
 
-generateKelas("25", 13);
-generateKelas("24", 14);
-generateKelas("23", 11);
+generateKelas("A25", 13); // A–M
+generateKelas("A24", 14); // A–N
+generateKelas("A23", 11); // A–K
 
+// ================= JAM =================
 function generateJam(selectId){
 const select=document.getElementById(selectId);
 for(let jam=7;jam<=15;jam++){
@@ -262,20 +196,8 @@ select.appendChild(option);
 });
 }
 }
-
 generateJam("jamMulai");
 generateJam("jamSelesai");
-
-const form=document.querySelector("form");
-const submitBtn=document.getElementById("submitBtn");
-const btnText=document.getElementById("btnText");
-const spinner=document.getElementById("spinner");
-
-form.addEventListener("submit",function(){
-submitBtn.classList.add("loading");
-btnText.style.display="none";
-spinner.style.display="inline-block";
-});
 
 </script>
 
