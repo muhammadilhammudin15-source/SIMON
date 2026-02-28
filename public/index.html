@@ -233,27 +233,21 @@ pointer-events:none;
 
 <script>
 
-const kelasConfig={
-"10":["A","B","C","D","E","F","G","H","I","J","K","L","M"],
-"11":["A","B","C","D","E","F","G","H","I","J","K","L","M","N"],
-"12":["A","B","C","D","E","F","G","H","I","J","K"]
-};
+const kelasSelect = document.getElementById("kelasSelect");
 
-const kelasSelect=document.getElementById("kelasSelect");
+function generateKelas(tingkat, jumlahHuruf) {
+  for (let i = 0; i < jumlahHuruf; i++) {
+    const huruf = String.fromCharCode(65 + i);
+    const option = document.createElement("option");
+    option.value = tingkat + huruf;
+    option.textContent = tingkat + huruf;
+    kelasSelect.appendChild(option);
+  }
+}
 
-Object.keys(kelasConfig).forEach(tingkat=>{
-const optgroup=document.createElement("optgroup");
-optgroup.label="Kelas "+tingkat;
-
-kelasConfig[tingkat].forEach(huruf=>{
-const option=document.createElement("option");
-option.value=`${tingkat} ${huruf}`;
-option.textContent=`${tingkat} ${huruf}`;
-optgroup.appendChild(option);
-});
-
-kelasSelect.appendChild(optgroup);
-});
+generateKelas("25", 13);
+generateKelas("24", 14);
+generateKelas("23", 11);
 
 function generateJam(selectId){
 const select=document.getElementById(selectId);
